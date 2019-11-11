@@ -28,4 +28,19 @@ const removeTask = (e) => {
     span.textContent--;
 }
 
+const searchTask = (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    const liItems = document.querySelectorAll('li');
+    let tasks = [...liItems];
+    tasks = tasks.filter(task => task.textContent.toLowerCase().includes(searchValue)); //show li with text inside our search input
+    ul.textContent = "";
+    tasks.forEach((task) => {
+        ul.appendChild(task);
+    })
+    span.textContent = tasks.length;
+}
+
+
+searchInput.addEventListener("input", searchTask);
+
 form.addEventListener("submit", addTask);
