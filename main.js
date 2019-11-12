@@ -4,7 +4,7 @@ const searchInput = document.querySelector("input.search");
 const addBtn = document.querySelector("button");
 const span = document.querySelector("span");
 const ul = document.querySelector("ul");
-const toDolist = [];
+let toDolist = [];
 
 //ADD TASK FUNCTION
 const addTask = (e) => {
@@ -14,48 +14,41 @@ const addTask = (e) => {
     addInput.value = "";
     const task = document.createElement(`li`);
     task.innerHTML = inputValue + ` <button>Usuń</button>`;
-    ul.appendChild(task);
+    ul.appendChild(task); //add task to ul list
     toDolist.push(task); //add new task to Array
     ul.textContent = ""; //clear ul from elements, because we will add elements from Array toDoList
     span.textContent = toDolist.length;
-    //forEach add id attribute to new elements of toDoList
-    renderTask();
-
-    task.querySelector("button").addEventListener('click', removeTask);
-
+    renderTask(); // add id attribute to new elements of toDoList
+    task.querySelector("button").addEventListener('click', removeTask); //search selector button in task only. Not in document.
 }
 
 //REMOVE TASK FUNCTION
 const removeTask = (e) => {
     e.target.parentNode.remove();
-    const elementId = e.target.parentNode.id;
-    toDolist.splice(elementId, 1);
+    const elementId = e.target.parentNode.id; //get id value of task
+    toDolist.splice(elementId, 1); //delete element from toDoList array
     span.textContent = toDolist.length;
     renderTask();
 }
 
-//RENDERING TASKS IN ARRAY
+//RENDERING TASKS IN ARRAY - getting element ID same like in Array elements
 const renderTask = () => {
     toDolist.forEach((element, index) => {
         element.id = index;
         ul.appendChild(element);
     })
-
 }
 
-// const searchTask = (e) => {
-//     const searchValue = e.target.value.toLowerCase();
-//     const liItems = document.querySelectorAll('li');
-//     let tasks = [...liItems];
-//     tasks = tasks.filter(task => task.textContent.toLowerCase().includes(searchValue)); //show li with text inside our search input
-//     ul.textContent = "";
-//     tasks.forEach((task) => {
-//         ul.appendChild(task);
-//     })
-//     span.textContent = tasks.length;
-// }
+//SEARCH TASK FUNCTION
+const searchTask = (e) => {
+    const searchValue = e.target.value.toLowerCase(); //get search input value in lower case
+    let resultList = toDolist.filter(element => element.textContent.toLowerCase().includes(searchValue)); //get new array with filtered values from toDoList
+    ul.textContent = ""; //reset ul content
+    resultList.forEach((element) => {
+        ul.appendChild(element);
+    })
+    span.textContent = resultList.length;
+}
 
-
-// searchInput.addEventListener("input", searchTask);
-
+searchInput.addEventListener("input", searchTask);
 form.addEventListener("submit", addTask);
