@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: rgb(172, 191, 206);
+}
+
+form {
+    padding: 20px;
+}
+
+input.search {
+    margin-top: 20px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #000;
+    background-color: rgb(41, 214, 128);
+    color: #000;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 5px #43D1AF;
+    border: 1px solid #43D1AF;
+}
+
+ul {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+li {
+    margin-top: 15px;
+}
+
+div {
+    display: inline-block;
+    text-align: center;
+    width: 120px
+}
+
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #cdcdcd;
+    background: #14D331;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    width: 120px;
+}
+
+/* HORIZONTALLY IN PLUS */
+.add-btn::before,
+.add-btn::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background-color: #fff;
+    transition: width 0.2s ease-in-out, border-radius 0.2 ease-in-out;
+}
+
+/* HORIZONTALLY RIGHT */
+.add-btn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+/* HORIZONTALLY LEFT */
+.add-btn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+/* CHANGE TO 4PX AFTER HOVER */
+.add-btn:hover::before,
+.add-btn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+}
+
+.btn-txt {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    color: #fff;
+    transition: opacity 0.2s;
+}
+
+.add-btn:hover .btn-txt {
+    opacity: 1;
+}
+
+/* VERTICALLY IN PLUS */
+.add-icon::after,
+.add-icon::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    overflow: hidden;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+/* VERTICALLY LEFT */
+.add-icon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+/* VERTICALLY RIGHT */
+.add-icon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+/* GET INVISIBLE AFTER HOVER ON BUTTON */
+.add-btn:hover .add-icon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+h1 {
+    margin-top: 30px;
+}
+
+/* REMOVE BUTTON */
+.rmv-btn {
+    margin-left: 10px;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s linear;
+}
+
+.rmv-btn:hover {
+    background-color: white;
+    color: red;
+}

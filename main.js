@@ -13,7 +13,7 @@ const addTask = (e) => {
     if (inputValue === "") return //if input is empty - stop the function
     addInput.value = "";
     const task = document.createElement(`li`);
-    task.innerHTML = inputValue + ` <button>Usuń</button>`;
+    task.innerHTML = inputValue + ` <button class="rmv-btn">Remove</button>`;
     ul.appendChild(task); //add task to ul list
     toDolist.push(task); //add new task to Array
     ul.textContent = ""; //clear ul from elements, because we will add elements from Array toDoList
