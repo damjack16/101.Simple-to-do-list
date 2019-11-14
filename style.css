@@ -178,4 +178,11 @@ h1 {
 .rmv-btn:active {
     position: relative;
     top: 1px;
+
+}
+
+@media (max-width: 360px) {
+    .add-mobile {
+        width: 135px;
+    }
 }
